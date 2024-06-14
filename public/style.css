@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+    background-color: rgb(240, 255, 240);
+    font-family: 'Roboto', sans-serif;
+    color: #014e40; /* Text color for all pages */
+    margin-top: 56px; /* Space for fixed navbar */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #014e40;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    padding-left: 20px;
+    font-weight: 500;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Home Section */
+#home {
+    background-color: #e0f7fa;
+    padding: 100px 0;
+    text-align: center;
+}
+
+#home .display-4 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#home .lead {
+    font-size: 1.25rem;
+}
+
+/* Section Heading */
+.section-heading {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #014e40;
+    margin-bottom: 40px;
+}
+
+/* Section Content */
+.section-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* Button */
+.btn-custom {
+    background-color: #014e40;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 20px auto;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #01382d;
+}
+
+/* Additional Sections */
+#about-container {
+    padding: 60px 0;
+}
+
+#about-container h2 {
+    color: #014e40;
+    font-weight: 600;
+}
+
+#about-container p {
+    color: #333;
+    font-size: 1rem;
+}
+
+#about-container .btn-custom {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#community {
+    background-color: #e0f7fa;
+    padding: 60px 0;
+}
+
+#community .section-heading {
+    color: #014e40;
+    font-weight: 600;
+}
+
+#community ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#community ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+#community ul li i {
+    color: #014e40;
+    margin-right: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+        padding: 0;
+    }
+
+    .navbar-nav .nav-link {
+        display: block;
+        padding: 10px 0;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .section-content {
+        padding: 0 20px;
+    }
+
+    .btn-custom {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+}
