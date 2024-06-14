@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const initData = require("./data");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/carbonEmissions";
+const MONGO_URL = "mongodb+srv://abhinayanair:2rSQQNNGj37OwVML@cluster0.t5tw7sl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 async function initializeData() {
     try {

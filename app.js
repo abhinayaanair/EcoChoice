@@ -5,7 +5,9 @@ const initializeData = require("./init");
 
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/carbonEmissions').then(() => {
+const MONGO_URL = "mongodb+srv://abhinayanair:2rSQQNNGj37OwVML@cluster0.t5tw7sl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+mongoose.connect(MONGO_URL).then(() => {
     console.log("Connected to MongoDB");
 }).catch((err) => {
     console.error("Error connecting to MongoDB:", err);
