@@ -62,6 +62,7 @@ app.post("/ecochoice/test/form", async (req, res) => {
         if (matchedCategory) {
             const selectedActivity = matchedCategory.activities.find(act => act.name.toLowerCase() === activity.toLowerCase());
             const carbonEmission = selectedActivity.carbonEmission;
+            const carbonEmission24=selectedActivity.carbonEmission24;
             console.log(`Carbon emitted for ${activity}: ${carbonEmission}`);
 
             // Find the activity with minimum carbon emission (best alternative)
@@ -80,7 +81,7 @@ app.post("/ecochoice/test/form", async (req, res) => {
 
             console.log(bestAlternative);
             console.log(isBestAlternative)
-            res.render("test", { allActivities, categoryActivities: [], carbonEmission, bestAlternative, isBestAlternative });
+            res.render("test", { allActivities, categoryActivities: [],selectedActivity,carbonEmission24, carbonEmission, bestAlternative, isBestAlternative });
         } else {
             console.log(`Activity '${activity}' not found.`);
             res.status(404).send(`Activity '${activity}' not found.`);
@@ -90,6 +91,8 @@ app.post("/ecochoice/test/form", async (req, res) => {
         res.status(500).send("Error finding activities");
     }
 });
+
+
 
 // Other routes
 app.get("/", (req, res) => {
@@ -103,6 +106,24 @@ app.get("/ecochoice", (req, res) => {
 app.get("/ecochoice/show", (req, res) => {
     res.render("show");
 });
+
+app.get("/ecochoice/bangalore",async (req, res) => {
+    try {
+        const Activity = await initializeData;
+        const allActivities = await Activity.find({});
+        res.render("bangalore",{allActivities}); // Initialize categoryActivities as an empty array
+    } catch (error) {
+        console.error("Error finding activities:", error);
+        res.status(500).send("Error finding activities");
+    }
+   
+})
+
+
+app.get("/ecochoice/resource", (req, res) => {
+    res.render("resource");
+});
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

@@ -22,7 +22,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/ecochoice"><b>EcoChoice</b></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -38,11 +39,11 @@
         <section id="home" class="text-center py-5 bg-light">
             <div class="container">
                 <h1 class="display-4">Enter the items you use often !!</h1>
-              
+
             </div>
         </section>
         <div class="section">
-            
+
             <form method="POST" action="/ecochoice/test">
                 <fieldset>
                     <legend>Select Category</legend>
@@ -50,59 +51,73 @@
                         <label for="categoryDropdown" class="form-label">Select Category:</label>
                         <select id="categoryDropdown" class="form-select" name="category">
                             <% if (!categoryActivities || categoryActivities.length===0) { %>
-                            <% for (let activity of allActivities) { %>
-                            <option value="<%= activity.category %>">
-                                <%= activity.category %>
-                            </option>
-                            <% } %>
-                            <% } else { %>
-                            <% for (let activity of allActivities) { %>
-                            <option value="<%= activity.category %>" <%= activity.category===categoryActivities[0].category ? 'selected' : '' %>><%= activity.category %></option>
-                            <% } %>
-                            <% } %>
+                                <% for (let activity of allActivities) { %>
+                                    <option value="<%= activity.category %>">
+                                        <%= activity.category %>
+                                    </option>
+                                    <% } %>
+                                        <% } else { %>
+                                            <% for (let activity of allActivities) { %>
+                                                <option value="<%= activity.category %>"
+                                                    <%=activity.category===categoryActivities[0].category ? 'selected'
+                                                    : '' %>><%= activity.category %>
+                                                </option>
+                                                <% } %>
+                                                    <% } %>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary btn-custom">Submit</button>
                 </fieldset>
             </form>
 
-            <% if (categoryActivities && categoryActivities.length > 0) { %>
-            <form method="POST" action="/ecochoice/test/form">
-                <fieldset>
-                    <legend>Select Activity</legend>
-                    <div class="mb-3">
-                        <label for="activityDropdown" class="form-label">Select Activity:</label>
-                        <select id="activityDropdown" class="form-select" name="activity">
-                            <% for (let activity of categoryActivities[0].activities) { %>
-                            <option value="<%= activity.name %>">
-                                <%= activity.name %>
-                            </option>
-                            <% } %>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-custom">Submit</button>
-                </fieldset>
-            </form>
-            <% } %>
+            <% if (categoryActivities && categoryActivities.length> 0) { %>
+                <form method="POST" action="/ecochoice/test/form">
+                    <fieldset>
+                        <legend>Select Activity</legend>
+                        <div class="mb-3">
+                            <label for="activityDropdown" class="form-label">Select Activity:</label>
+                            <select id="activityDropdown" class="form-select" name="activity">
+                                <% for (let activity of categoryActivities[0].activities) { %>
+                                    <option value="<%= activity.name %>">
+                                        <%= activity.name %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-custom">Submit</button>
+                    </fieldset>
+                </form>
+                <% } %>
         </div>
 
         <div class="section">
             <h4>Result</h4>
-            <% if (typeof carbonEmission !== 'undefined' && carbonEmission !== null) { %>
-            <p>Carbon Emission: <%= carbonEmission %> kg CO2</p>
-            
-            <% if (bestAlternative) { %>
-            <% if (isBestAlternative) { %>
-            <p style="color:red"><b>Congratulations!</b>You chose the best alternative: <%= bestAlternative.name %> (<%= bestAlternative.carbonEmission %> kg CO2)</p>
-            <% } else { %>
-            <p style="color:red">Best alternative with least carbon emission: <%= bestAlternative.name %> (<%= bestAlternative.carbonEmission %> kg CO2)</p>
-            <% } %>
-            <% } else { %>
-            <p>No alternative found for this activity.</p>
-            <% } %>
-            <% } else { %>
-            <p>Select a category and activity to view carbon emission.</p>
-            <% } %>
+            <% if (typeof carbonEmission !=='undefined' && carbonEmission !==null) { %>
+                <p>Carbon Emission in a <b>year</b> by <%=selectedActivity.name%> :<%= carbonEmission %> kg CO2</p>
+
+                <p>Carbon Emission in <b>24 hours</b> by <%=selectedActivity.name%>:<%= carbonEmission24 %> kg CO2</p>
+
+
+                <% if (bestAlternative) { %>
+                    <% if (isBestAlternative) { %>
+                        <p style="color:red"><b>Congratulations!</b>You chose the best alternative: <br>
+                            <%= bestAlternative.name %> (<%= bestAlternative.carbonEmission %> kg CO2)
+                        </p>
+                        <% } else { %>
+                            <p style="color:red">Best alternative with least carbon emission: <br>
+                                <%= bestAlternative.name %> (<%= bestAlternative.carbonEmission %> kg CO2 / year)
+                                        <br>
+                                        <%= bestAlternative.name %>
+                                            <%= bestAlternative.carbonEmission24 %> kg CO2 / day
+                            </p>
+                            <% } %>
+
+                                <% } else { %>
+                                    <p>No alternative found for this activity.</p>
+                                    <% } %>
+                                        <% } else { %>
+                                            <p>Select a category and activity to view carbon emission.</p>
+                                            <% } %>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

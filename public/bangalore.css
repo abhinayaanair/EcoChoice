@@ -1,0 +1,14 @@
+.navbar {
+    background-color: #014e40;
+    color: white;
+}
+
+.navbar-brand {
+    color: white !important;
+    padding-left: 10px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    padding-left: 20px;
+}
