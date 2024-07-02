@@ -1,13 +1,31 @@
 module.exports.data = [
-  {
-      category: "Household Appliances",
-      activities: [
-          { name: "Air Conditioners", carbonEmission: 2087.8, carbonEmission24: 5.720 },
-          { name: "Electric Fans", carbonEmission: 262.8, carbonEmission24: 0.720 },
-          { name: "Microwaves", carbonEmission: 146, carbonEmission24: 0.4 },
-          { name: "Induction Cooktops", carbonEmission: 79.99997, carbonEmission24: 0.219178 }
-      ]
-  },
+  {category: "Cooking Household Appliances",
+  activities: [
+      { name: "Solar Ovens", carbonEmission: 350.4, carbonEmission24: 0.96 },
+      { name: "Electric Kettle", carbonEmission: 8760, carbonEmission24: 24 },
+      { name: "Earthen stove", carbonEmission: 70.08, carbonEmission24: 0.192 },
+      { name: "Air fryer", carbonEmission: 12264 , carbonEmission24: 33.6  },
+      { name: "Convection Oven", carbonEmission: 3504, carbonEmission24: 9.6  },
+      { name: "Microwaves", carbonEmission: 146, carbonEmission24: 0.4 },
+      { name: "Induction Cooktops", carbonEmission: 79.99997, carbonEmission24: 0.219178 }
+  ]
+},
+{
+  category: "Refrigerating Household Appliances",
+  activities: [
+      { name: "Freezer", carbonEmission: 106.458, carbonEmission24: 0.29167 },
+      { name: "Refrigerators", carbonEmission: 89, carbonEmission24: 0.24383 },
+      
+  ]
+},
+{
+  category: "Cooling Household Appliances",
+  activities: [
+      { name: "Air conditioners", carbonEmission: 2087.8, carbonEmission24: 5.720 },
+      { name: "Electric Fan", carbonEmission: 262.8, carbonEmission24: 0.720 },       
+      { name: "Earth Tubes", carbonEmission: 0, carbonEmission24: 0 },       
+     ]
+},
   {
       category: "Transportation",
       activities: [
