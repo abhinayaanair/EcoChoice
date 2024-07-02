@@ -16,6 +16,7 @@ async function initializeData() {
           name: String,
           carbonEmission: Number,
           carbonEmission24: Number,
+          how:String,
         },
       ],
     });
